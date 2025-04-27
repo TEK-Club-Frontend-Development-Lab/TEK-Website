@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'landing.css' %}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Django Project</title>
+    </head>
+    <li><a href = "{% url 'landing:landing' %}">Landing</a></li>
+    <li><a href = "{% url 'about:about' %}">About</a></li>
+    <li><a href = "{% url 'news:announcement' %}">Announcement</a></li>
+    <li><a href = "{% url 'news:event' %}">event</a></li>
+    <li><a href = "{% url 'lab:lab1' %}">lab1</a></li>
+    <li><a href = "{% url 'lab:lab2' %}">lab2</a></li>
+    <li><a href = "{% url 'lab:lab3' %}">lab3</a></li>
+    <li><a href = "{% url 'lab:lab4' %}">lab4</a></li>
+    <li><a href = "{% url 'joinus:apply' %}">apply</a></li>
+    <li><a href = "{% url 'joinus:contact' %}">contact</a></li>
+    <li><a href = "{% url 'joinus:faq' %}">faq</a></li>
