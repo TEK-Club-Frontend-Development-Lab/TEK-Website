@@ -1,0 +1,65 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'base.css' %}?{% now 'U' %}"/>
+
+
+
+<header class="fixed-header">
+
+    <div class="topbanner">
+        <img src="/static/img/ulogo2.png"class="toplogo" alt="top u logo" width="700">
+        <a href="{% url 'landing:landing' %}">
+
+    </div>
+
+    <div class="header-container">
+        <div class="header_logo">
+            <a href="{% url 'landing:landing' %}">
+                <img src="{% static 'img/teklogo2.png' %}" style="height: 150px;" alt="Logo">
+            </a>
+            
+        </div>
+
+    <div class="nav-links">
+        <!--<input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            ☰ <!-- Unicode character for hamburger icon -->
+        </label>
+         <ul class="menu"> 
+             <li><a href="{% url 'about:about' %}">About</a></li>
+             <li><a href="{% url 'news:announcement' %}">News</a>
+                <ul class="submenu">
+                    <li><a href="{% url 'news:announcement' %}">Announcement</a></li>
+                     <li><a href="{% url 'news:event' %}">Event</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'lab:lab1' %}">Labs</a>
+                <ul class="submenu">
+                    <li><a href="{% url 'lab:lab1' %}">Lab 1</a></li>
+                    <li><a href="{% url 'lab:lab2' %}">Lab 2</a></li>
+                    <li><a href="{% url 'lab:lab3' %}">Lab 3</a></li>
+                    <li><a href="{% url 'lab:lab4' %}">Lab 4</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'joinus:apply' %}">Join Us</a>
+                <ul class="submenu">
+                    <li><a href="{% url 'joinus:apply' %}">Apply</a></li>
+                </ul>
+            </li>
+         </ul>
+    </div>
+    <!-- Carousel background -->
+    <!--<div class="carousel-item"></div>-->
+    <!-- Carousel Items (Background Images) -->
+
+        <div class="carousel-inner">
+           <div class="carousel-item active">
+               <div class="carousel-image" style="background-image: url('{% static 'img/tech.jpg' %}');"></div>
+
+               <!-- Text Overlay -->
+               <div class="carousel-caption d-none d-md-block text-end">
+                   <h5>Welcome to Tek club</h5>
+               </div>
+           </div>
+        </div>
+   </div>
+</header>

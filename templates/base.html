@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tek Club Website</title>
+    {% block extra-head %}
+    {# you can add any page-specific additional headers here #}
+    {% endblock %}
+</head>
+
+<body>
+
+    <div class="wrapper">
+        {% include "header.html" %}
+        
+        <main>
+            {% block otherpages %}
+            {% endblock %}
+        </main>
+        {% include "footer.html" %}
+    </div>
+</body>
+</html>

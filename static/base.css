@@ -1,0 +1,281 @@
+body {
+    padding-top: 100px; /* 헤더 높이와 동일하게 */
+  }
+
+.topbanner {
+    max-width: 1366px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    margin-top: 0px;
+    background-color: #707271;
+    color:  #E2E6E6;
+    text-align: center;
+    padding: 13px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toplogo {
+    max-width: 100px;
+    height: 18px;
+    margin: 0 0px;
+    
+}
+
+.header-container {
+    max-width: 1366px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    z-index: 1;
+    height: 5vh;
+}
+
+.header_logo {
+    display: flex;  /* Allows the logo to grow and fill available space */
+    text-align: left;   
+    align-items: center;
+    margin: o;
+}
+
+.header_logo a img {
+    height: 45px;
+    width: 150px;
+   
+
+}
+
+.nav-links {
+    display: flex;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap:90px;
+    margin: 0 130px;
+    padding: 0;
+    height: 5vh;
+
+  
+    
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 5px 20px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* 메뉴 항목에 대한 스타일 */
+.menu li a:hover {
+    background-color: #890000;
+    border: 2px solid #b22222; /* 빨간색 테두리 */
+    border-radius: 5px; /* 모서리 라운딩 */
+    background-color: transparent; /* 배경색 제거 */
+}
+
+.nav-links ul li {
+    position: relative; /* Important for dropdown positioning */
+}
+.nav-links ul li a {
+    color: black;
+    display: block;
+    text-decoration: none;
+    padding: 12px 15px;
+    text-align: center;
+    min-width: 160px;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.nav-links ul li ul {
+    display: none; /* Hide submenu by default (same as before) */
+    position: absolute; /* Dropdown should be positioned relative to parent */
+    width: 160px; /* Same as before */
+    background-color: #E2E6E6; /* Same as before */
+    top: 100%; /* Ensure the submenu appears just below the parent */
+    left: 0;
+    z-index: 1000; /* Increased z-index to ensure dropdown stays on top */
+    opacity: 0; /* Initially invisible (new) */
+    visibility: hidden; /* Hidden by default (new) */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opening/closing (new) */
+}
+/* Added a minimum height to make the items easier to click */
+.nav-links ul li ul li {
+    border-bottom: 1px solid #ced4da; /* Same as before */
+    min-height: 40px; /* Ensure enough height for clickable area (new) */
+}
+
+/* 드롭다운메뉴 글씨색, 배경색 변경 */
+.nav-links ul li ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    display: block;
+    padding: 12px 15px;
+    text-align: center;
+    background-color: #E2E6E6;
+}
+
+.nav-links ul li ul li a:hover {
+    background-color: #E2E6E6; /* Same as before */
+}
+
+.nav-links ul li:hover ul,
+.nav-links ul li:focus-within ul {
+    display: block; /* Show the submenu */
+    opacity: 1; /* Fully visible (new) */
+    visibility: visible; /* Visible for interaction (new) */
+}
+
+/* Keep the parent menu highlighted when the submenu is open (new) */
+.nav-links ul li:hover > a,
+.nav-links ul li:focus-within > a {
+    background-color: white; /* Keep parent item highlighted (new) */
+}
+
+.nav-links ul li ul.has-submenu {
+    display: none;
+    position: relative; 
+    background-color: #E2E6E6;
+    width: 160px;
+}
+
+.nav-links ul li:hover > ul.has-submenu {
+    display: block;
+}
+
+.nav-links ul li ul li:last-child {
+    border-bottom: none; 
+}
+
+@media (max-width: 768px) {
+    .nav-links ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-links ul li {
+        width: 100%;
+    }
+
+    .nav-links ul li a {
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    /* Submenu adjustments for mobile */
+    .nav-links ul li ul {
+        position: static;
+        display: none; /* Hide submenus by default */
+        width: 100%;
+        background-color: #444;
+    }
+
+    /* Display submenu when parent is focused (unchanged) */
+    .nav-links ul li:focus-within ul {
+        display: block;
+    }
+
+    .nav-links ul li ul li a {
+        padding-left: 30px; /* Indent submenu items */
+    }
+
+    /* Adjust submenu item styles (unchanged) */
+    .nav-links ul li ul li a {
+        padding: 12px 15px;
+    }
+
+    .nav-links ul li ul.has-submenu {
+        width: 100%;
+    }
+
+}
+
+  .footer-content {
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+    background-color:#707271;
+    color: #fff;
+    padding: 20px;
+}
+
+.footer-logo {
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/*
+.footer-content p {
+    text-align: center;
+    font-size: 12px;
+}*/
+
+.footer-logo-img {
+    height: 60px;
+    width: auto;
+    max-width: 100%; /* Prevents the image from exceeding its container */
+    margin-bottom: 10px;
+}
+/*
+.footer-texts {
+    flex: 0 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}*/
+.footer-texts {
+    display: flex;
+    flex-direction: column;  
+    align-items: flex-start;
+    text-align: left; 
+    font-size: 12px;
+}
+
+.footer-text1 {
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.footer-text2 {
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Stacks the logo and texts vertically on small screens */
+        align-items: center;
+        text-align: center; /* Centers the text on small screens */
+    }
+
+    .footer-logo {
+        margin-bottom: 20px;
+    }
+
+    .footer-texts {
+        align-items: center;
+        font-size: 8px;
+        width: 100%;
+        flex: none;
+    }
+}
