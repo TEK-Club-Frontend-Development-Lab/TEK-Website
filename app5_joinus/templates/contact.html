@@ -1,1 +1,35 @@
-contact
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'contact.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TEK Club Website</title>
+    </head>
+    <body>
+        <div class="contact-section">
+            <h1>Contact Us</h1>
+            <p class="contact-intro">If you have any questions or inquiries, feel free to reach out to the contacts below.</p>
+        
+            <div class="faculty">
+                <h2>Faculty Advisor</h2>
+                <p><strong>Professor Byoung-Gyu Gong</strong> – <a href="mailto:Byoung-Gyu.Gong@utah.edu">Byoung-Gyu.Gong@utah.edu</a></p>
+            </div>
+        
+            <div class="labs">
+                <h2>Lab Team Leaders</h2>
+                <ul>
+                    <li><strong>Frontend Development Lab</strong>: Ryulha Kong – <a href="mailto:u1475915@utah.edu">u1475915@utah.edu</a></li>
+                    <li><strong>Data Visualization Lab</strong>: Jireh Kwon – <a href="mailto:u1501899@utah.edu">u1501899@utah.edu</a></li>
+                    <li><strong>Data Engineering Lab</strong>: Don Chan Lee – <a href="mailto:u1500457@utah.edu">u1500457@utah.edu</a></li>
+                    <li><strong>Excel Lab</strong>: Jung Ko – <a href="mailto:u1554965@utah.edu">u1554965@utah.edu</a></li>
+                </ul>
+            </div>
+        
+            <p class="hours">Response hours: Monday–Friday, 10:00am–6:00pm</p>
+        </div>        
+    </body>
+</html>
