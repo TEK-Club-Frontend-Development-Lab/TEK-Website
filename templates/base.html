@@ -1,0 +1,28 @@
+<!-- base.html -->
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'static/base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
+    <title></title>
+    {% block extra-head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1></h1>
+    </header>
+
+    <main>
+        {% block otherpages %}
+        <!-- 자식 템플릿 내용이 여기 들어감 -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p></p>
+    </footer>
+</body>
+</html>
