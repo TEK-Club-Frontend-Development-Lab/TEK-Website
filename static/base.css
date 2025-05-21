@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
     font-family: 'Montserrat', 'Rubik', sans-serif;
 }
 
@@ -11,6 +12,11 @@ body {
 body {
     padding-top: 100px; /* 헤더 높이와 동일하게 */
   }
+=======
+    padding-top: 100px; 
+    font-family: 'Montserrat', 'Rubik', sans-serif;
+}
+>>>>>>> cf05e7ce413ac0647e805a2c964339b9c1dff4d4
 
 .fixed-header {
     position: fixed;
@@ -311,3 +317,4 @@ body {
         flex: none;
     }
 }
+
