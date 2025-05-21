@@ -1,1 +1,50 @@
-apply
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'apply.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TEK Club Website</title>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <header class="about">
+                <a href="#">TEK Club Application</a>
+            </header>
+
+            <form class="application-form" action="/apply/submit/" method="post">
+                {% csrf_token %}
+        
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="grade">Year</label>
+                <select id="grade" name="grade">
+                    <option value="1">Freshman</option>
+                    <option value="2">Sophomore</option>
+                    <option value="3">Junior</option>
+                    <option value="4">Senior</option>
+                </select>
+        
+                <label for="motivation">Why do you want to join?</label>
+                <textarea id="motivation" name="motivation" rows="4" cols="50" placeholder="Write your motivation here."></textarea>
+        
+        
+                <input type="submit" value="Apply">
+            </form>
+
+        </div>
+    </body>
+</html>
+        
+
+
+
