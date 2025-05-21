@@ -5,11 +5,22 @@
 
 {% block extra-head %}
 <link rel="stylesheet" href="{% static 'apply.css' %}?{% now "U" %}">
+<style>
+    /* Hide the carousel */
+    .carousel-inner {
+    display: none !important;
+    }
+</style>
 {% endblock %}
 
 {% block otherpages %}
-    <body>
+    <!--<body>-->
 
+        <div class = "coverpic">
+            <img src = "{% static 'img/contact3.jpeg' %}">
+            <a>Apply</a>
+        </div>
+        
         <div class="container">
 
             <header class="about">
@@ -41,7 +52,7 @@
             </form>
 
         </div>
-    </body>
+    <!--</body>-->
 </html>
 
 {% endblock %}

@@ -1,14 +1,23 @@
-
-
 *{
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;,
   }
 
-body {
-    padding-top: 100px; 
+html, body {
     font-family: 'Montserrat', 'Rubik', sans-serif;
+    height: 100%;
+}
+
+main {
+    flex: 1;
+    display: block;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .fixed-header {
@@ -17,6 +26,9 @@ body {
     left: 0;
     right: 0;
     display: block;
+    z-index: 999;
+    background-color: white;
+    height: 130px;
 }
 
 .topbanner {
@@ -44,15 +56,16 @@ body {
 }
 
 .header-container {
-    max-width: 1366px;
+    width: 100%;
     position: relative;
     display: flex;
-    margin-top: 100px;
+    margin-top: 0;
     align-items: center;
     text-align: center;
     margin: 0 auto;
     z-index: 1;
     height: 5vh;
+    margin-bottom: 0;
 }
 
 .header_logo {
@@ -73,16 +86,17 @@ body {
 .nav-links {
     display: flex;
     margin-top: 100px;
+    margin-bottom: 0;
 }
 
 .menu {
     display: flex;
     list-style: none;
-    gap:90px;
+    gap:60px;
     margin: 0 130px;
     padding: 0;
     height: 5vh;
-    
+    margin-bottom: 0;
 }
 
 .menu li a {
@@ -111,7 +125,7 @@ body {
     text-decoration: none;
     padding: 12px 15px;
     text-align: center;
-    min-width: 160px;
+    min-width: 220px;
     white-space: nowrap; /* Prevent text from wrapping */
 }
 
@@ -164,7 +178,7 @@ body {
     display: none;
     position: relative; 
     background-color: #E2E6E6;
-    width: 160px;
+    width: 200px;
 }
 
 .nav-links ul li:hover > ul.has-submenu {
@@ -220,14 +234,14 @@ body {
 
 }
 
-  .footer-content {
+.footer-content {
     display: flex;
     align-items: center;  
     justify-content: center;
     background-color:#707271;
     color: #fff;
     padding: 20px;
-    margin-bottom: 0;
+    margin-top: auto;
 }
 
 .footer-logo {
@@ -278,19 +292,48 @@ body {
 }
 
 .carousel-inner {
-    height: 500px; /* 또는 원하는 높이 */
-  }
+    width: 100%;
+    height: 800px;
+    margin-top: 130px;
+    clear: both
+}
   
-  .carousel-item :active {
+.carousel-item.active {
     height: 100%;
-  }
+    width: 100%;
+}
   
-  .carousel-image {
-    height: 100%;
+.carousel-image {
+    height: auto;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
     background-size: cover;
     background-position: center;
-  }
-  
+    background-repeat: no-repeat;
+}
+
+.carousel-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-caption-custom {
+    bottom: 30%; 
+    position: absolute;
+    right: 10%;
+    left: 10%;
+    text-align: right; 
+    color: white; 
+    font-size: 30px;
+}
+
+.carousel-caption-custom h5 {
+    font-size: 50px;
+    font-weight: 800;
+}
 
 @media (max-width: 768px) {
     .footer-content {
