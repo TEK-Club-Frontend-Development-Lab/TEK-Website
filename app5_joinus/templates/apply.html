@@ -1,14 +1,13 @@
+{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="{% static 'apply.css' %}">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TEK Club Website</title>
-    </head>
+
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'apply.css' %}?{% now "U" %}">
+{% endblock %}
+
+{% block otherpages %}
     <body>
 
         <div class="container">
@@ -44,7 +43,5 @@
         </div>
     </body>
 </html>
-        
 
-
-
+{% endblock %}

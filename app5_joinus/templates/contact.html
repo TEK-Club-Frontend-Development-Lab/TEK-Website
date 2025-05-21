@@ -1,5 +1,13 @@
+{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
+
+
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'contact.css' %}?{% now "U" %}">
+{% endblock %}
+
+{% block otherpages %}
 
 <html lang="en">
     <head>
@@ -33,3 +41,5 @@
         </div>        
     </body>
 </html>
+
+{% endblock %}
