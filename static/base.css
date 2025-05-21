@@ -1,10 +1,33 @@
 body {
-    padding-top: 100px; 
+<<<<<<< HEAD
     font-family: 'Montserrat', 'Rubik', sans-serif;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;,
+  }
+
+body {
+    padding-top: 100px; /* 헤더 높이와 동일하게 */
+  }
+=======
+    padding-top: 100px; 
+    font-family: 'Montserrat', 'Rubik', sans-serif;
+}
+>>>>>>> cf05e7ce413ac0647e805a2c964339b9c1dff4d4
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+}
+
 .topbanner {
-    max-width: 1366px;
+    max-width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -31,6 +54,7 @@ body {
     max-width: 1366px;
     position: relative;
     display: flex;
+    margin-top: 100px;
     align-items: center;
     text-align: center;
     margin: 0 auto;
@@ -43,6 +67,7 @@ body {
     text-align: left;   
     align-items: center;
     margin: o;
+    margin-top: 100px;
 }
 
 .header_logo a img {
@@ -54,11 +79,8 @@ body {
 
 .nav-links {
     display: flex;
+    margin-top: 100px;
 }
-
-body {
-    font-family: 'Montserrat', sans-serif;
-  }
 
 .menu {
     display: flex;
@@ -67,8 +89,6 @@ body {
     margin: 0 130px;
     padding: 0;
     height: 5vh;
-
-  
     
 }
 
@@ -204,6 +224,7 @@ body {
         width: 100%;
     }
 
+
 }
 
   .footer-content {
@@ -213,6 +234,7 @@ body {
     background-color:#707271;
     color: #fff;
     padding: 20px;
+    margin-bottom: 0;
 }
 
 .footer-logo {
@@ -261,6 +283,21 @@ body {
     padding: 0;
     margin: 0;
 }
+
+.carousel-inner {
+    height: 500px; /* 또는 원하는 높이 */
+  }
+  
+  .carousel-item :active {
+    height: 100%;
+  }
+  
+  .carousel-image {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  
 
 @media (max-width: 768px) {
     .footer-content {
