@@ -1,6 +1,7 @@
 body {
-    padding-top: 100px; /* 헤더 높이와 동일하게 */
-  }
+    padding-top: 100px; 
+    font-family: 'Montserrat', 'Rubik', sans-serif;
+}
 
 .topbanner {
     max-width: 1366px;
@@ -279,3 +280,4 @@ body {
         flex: none;
     }
 }
+
