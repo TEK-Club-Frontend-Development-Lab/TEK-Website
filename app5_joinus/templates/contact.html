@@ -1,15 +1,24 @@
+{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="{% static 'contact.css' %}">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rubik&display=swap" rel="stylesheet">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TEK Club Website</title>
-    </head>
-    <body>
+
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'contact.css' %}?{% now "U" %}">
+<style>
+    /* Hide the carousel */
+    .carousel-inner {
+    display: none !important;
+    }
+</style>
+{% endblock %}
+
+{% block otherpages %}
+        <div class = "coverpic">
+            <img src = "{% static 'img/contact3.jpeg' %}">
+            <a>Contact</a>
+        </div>
+
         <div class="contact-section">
             <h1>Contact Us</h1>
             <p class="contact-intro">If you have any questions or inquiries, feel free to reach out to the contacts below.</p>
@@ -24,12 +33,12 @@
                 <ul>
                     <li><strong>Frontend Development Lab</strong>: Ryulha Kong – <a href="mailto:u1475915@utah.edu">u1475915@utah.edu</a></li>
                     <li><strong>Data Visualization Lab</strong>: Jireh Kwon – <a href="mailto:u1501899@utah.edu">u1501899@utah.edu</a></li>
-                    <li><strong>Data Engineering Lab</strong>: Don Chan Lee – <a href="mailto:u1500457@utah.edu">u1500457@utah.edu</a></li>
+                    <li><strong>Data Engineering Lab</strong>: Jung Ko – <a href="mailto:u1554965@utah.edu">u1500457@utah.edu</a></li>
                     <li><strong>Excel Lab</strong>: Jung Ko – <a href="mailto:u1554965@utah.edu">u1554965@utah.edu</a></li>
                 </ul>
             </div>
         
             <p class="hours">Response hours: Monday–Friday, 10:00am–6:00pm</p>
         </div>        
-    </body>
-</html>
+
+{% endblock %}

@@ -3,11 +3,17 @@
 
 {% block extra-head %}
 <link rel="stylesheet" href="{% static 'lab.css' %}?{% now "U" %}">
+<style>
+    /* Hide the carousel */
+    .carousel-inner {
+    display: none !important;
+    }
+</style>
 {% endblock %}
 
 {% block otherpages %}
 <div class = "coverpic">
-    <img src = "{% static 'img/coverpic1.jpg' %}">
+    <img src = "{% static 'img/frontend.jpeg' %}"style="object-fit: cover; object-position: 0% 70%;">
     <a></a>
 </div>
 <div class="labcontainer">

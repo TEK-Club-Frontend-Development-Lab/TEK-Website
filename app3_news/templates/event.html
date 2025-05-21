@@ -3,6 +3,12 @@
 
 {% block extra-head %}
 <link rel="stylesheet" href="{% static 'event.css' %}?{% now "U" %}">
+<style>
+    /* Hide the carousel */
+    .carousel-inner {
+    display: none !important;
+    }
+</style>
 {% endblock %}
 
 {% block otherpages %}
