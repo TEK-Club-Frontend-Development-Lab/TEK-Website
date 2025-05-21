@@ -60,9 +60,8 @@ ROOT_URLCONF = 'tek.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR/'templates',
-            ],
+        'DIRS': [BASE_DIR/'templates',],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,5 +132,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
