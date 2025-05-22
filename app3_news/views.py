@@ -9,3 +9,7 @@ def announcement(request):
 def event(request): 
     template=loader.get_template('event.html')
     return HttpResponse(template.render())
+
+def post1(request): 
+    template=loader.get_template('post1.html')
+    return HttpResponse(template.render())

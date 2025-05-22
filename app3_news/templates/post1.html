@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TEK Club Homepage Open!</title>
+    <link rel="stylesheet" href="{% static 'post1.css' %}">
+</head>
+
+<body>
+<div class=container>
+        <div class="post-container">
+            <h1 class="post-title">TEK Club Homepage Officially Open!</h1>
+         <div class="post-meta">
+             <span class="post-date">2025-05-21</span> | <span class="post-author">Admin</span>
+        </div>
+        <hr class="meta-divider">
+            <div class="post-content">
+              <p>We are excited to announce the official launch of the TEK Club homepage! 🎉</p>
+              <p>From here, you can explore our labs, events, and learn how to join the club. This website will serve as a central hub for all things TEK — stay tuned for exciting updates, new projects, and opportunities to get involved.</p>
+              <p>Thank you for supporting TEK Club. Let’s innovate together!</p>
+            </div>
+            <div class="back-button-container">
+                <a href="{% url 'news:announcement' %}" class="back-button"><span>View All</span></a>
+            </div>
+        </div>
+</div>
+</body>
+</html>

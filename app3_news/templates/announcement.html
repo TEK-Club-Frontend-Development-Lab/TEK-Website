@@ -1,1 +1,42 @@
-announcement
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - TEK Club</title>
+    <link rel="stylesheet" href="{% static 'announcement.css' %}">
+</head>
+<body>
+    <div class="announcement-board">
+        <h2>Announcement</h2>
+        <table class="board-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Writer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="{% url 'news:post1' %}">TEK Club Homepage Officially Open!</a></td>
+                    <td>2025-05-21</td>
+                    <td>Admin</td>
+                </tr>
+               
+                {% for row in data_body %}
+                <tr>
+                    <td>{{ row.0 }}</td>
+                    <td>{{ row.1 }}</td>
+                    <td>{{ row.2 }}</td>
+                    <td>{{ row.3 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

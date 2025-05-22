@@ -1,1 +1,116 @@
-about
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - TEK Club</title>
+    <link rel="stylesheet" href="{% static 'about.css' %}">
+</head>
+<body>
+
+<div class="hero">
+    <img src="{% static 'images/tek-logo.png' %}" alt="TEK Club Logo" class="hero-logo">
+    <p class="hero-slogan"><strong><span id="typing-text"></span></strong></p>
+</div>
+
+<div class="container">
+    
+    <div class="aboutsection">
+        <h2>Who We Are</h2>
+        <p>
+            <strong><em>We are the coders and programmers searching for the best solution for the business problems with information and intelligence systems that can automate the business processes.</em></strong>
+        </p>
+        <p>
+             
+			TEK Club at the UAC is the chapter of the TEK Club at the Information Systems major located at the University of Utah. The objective of this student club is to promote coding, programming, and analytic skills of the club members through regular tutorial, hackathon, project, and networking sessions. We build web, desktop, and mobile applications that can streamline business and administrative process through automation. Also, we build data infrastructure including database, data warehouse, and data dashboard, that can support and sustain business process and data-driven decision-making. 
+
+        </p>
+        <p>
+            Area of interest for the development includes business data-dashboard, website development, business intelligence system, automatic transaction and ticketing system, algorithmic trading system, business analytics, business in AI, sports analytics, and generative arts. We have subgroups to cover each topic area to develop further expertise in specific fields. 
+
+        </p>
+    </div>
+
+    <div class="labstructure-card">
+        <h2 class="section-heading">Our Lab Structure</h2>
+        <div class="lab-cards">
+            <a href="/lab1/" class="lab-card">
+                <h3>Frontend
+					<br>Development Lab</h3>
+                <p class="lab-desc">Web App and Website Development</p>
+            </a>
+            <a href="/lab2/" class="lab-card">
+                <h3>Data Visualization <br>Lab</h3>
+                <p class="lab-desc">Data Visualization and Dashboard</p>
+            </a>
+            <a href="/lab3/" class="lab-card">
+                <h3>Data Engineering <br>Lab</h3>
+                <p class="lab-desc">Data Analytics and Science</p>
+            </a>
+            <a href="/lab4/" class="lab-card">
+                <h3>Excel Lab</h3>
+                <p class="lab-desc">Automating Spreadsheets and <br> Business Process</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Typing animation
+    const text = '"We are the innovators of business technology."';
+    const target = document.getElementById('typing-text');
+    let i = 0;
+    function typeChar() {
+      if (i < text.length) {
+        target.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeChar, 50);
+      }
+    }
+    typeChar();
+
+    // Intersection observer for .visible animation trigger
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const labSection = document.querySelector('.labstructure-card');
+    if (labSection) observer.observe(labSection);
+    const headings = document.querySelectorAll('.section-heading, .aboutsection h2');
+    headings.forEach(h => observer.observe(h));
+
+    // Auto-scroll unless user interacted
+    let userInteracted = false;
+    const detectInteraction = () => {
+      userInteracted = true;
+      window.removeEventListener('scroll', detectInteraction);
+      window.removeEventListener('wheel', detectInteraction);
+      window.removeEventListener('touchmove', detectInteraction);
+      window.removeEventListener('keydown', detectInteraction);
+    };
+
+    window.addEventListener('scroll', detectInteraction);
+    window.addEventListener('wheel', detectInteraction);
+    window.addEventListener('touchmove', detectInteraction);
+    window.addEventListener('keydown', detectInteraction);
+
+    setTimeout(() => {
+      if (!userInteracted) {
+        window.scrollTo({
+          top: window.innerHeight * 0.3,
+          behavior: 'smooth'
+        });
+      }
+    }, 2580);
+  });
+</script>
+  
+</body>
+</html>
