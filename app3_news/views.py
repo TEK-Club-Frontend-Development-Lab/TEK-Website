@@ -29,3 +29,7 @@ def event(request):
     }
 
     return render(request, 'event.html', context)
+
+def post1(request): 
+    template=loader.get_template('post1.html')
+    return HttpResponse(template.render())
