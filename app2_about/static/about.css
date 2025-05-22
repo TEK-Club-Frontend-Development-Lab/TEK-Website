@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Rubik:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+/* 초기화: 모든 여백 제거 */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+.container {
+    max-width: 1366px;
+    display: block;
+    margin: 0 auto;
+    padding: 0 40px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #e2e2e2 60%, white 100%);
+}
+
+.hero-logo {
+    width: 400px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.hero-slogan {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 30px;
+}
+
+#typing-text::after {
+  content: "|";
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.aboutsection {
+    margin: 140px auto 140px;
+    max-width: 900px;
+}
+
+.aboutsection h2 {
+    color:#890000;
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+
+.aboutsection h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    background-color: #707271;
+    margin: 20px auto 0;
+}
+
+.aboutsection p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aboutsection p:first-of-type {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.section-heading {
+    color: #890000;
+    font-size: 23px;
+    margin-bottom: 40px;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.section-heading::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    background-color: #707271;
+    margin: 10px auto 0;
+    margin-top: 20px;
+}
+
+.labstructure {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.labstructure h2 {
+    color: #890000;
+    font-size: 24px;
+    margin-bottom: 31px;
+}
+
+.labstructure-card {
+    margin: 100px auto 50px;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    max-width: 1000px;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1.2s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.labstructure-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.labstructure-card h2 {
+    color: #890000;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.lab-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* === Lab Card === */
+.lab-card {
+    background-color: #E2E6E6;
+    padding:30px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #000;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    width: 260px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.lab-card:hover {
+    background-color: #890000;
+    transform: translateY(-6px);
+    color: #ffffff;
+}
+
+/* === Lab Card Title & Description Styling and Hover === */
+.lab-card h3,
+.lab-card .lab-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    color: #000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+    position: absolute;
+}
+
+.lab-card .lab-desc {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    margin-top: 55px;
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease;
+}
+
+.lab-card:hover h3 {
+    opacity: 0;
+}
+
+.lab-card:hover .lab-desc {
+    opacity: 1;
+    max-height: 100px;
+    color: #ffffff;
+    transform: translateY(10px);
+}
