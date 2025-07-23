@@ -2,26 +2,25 @@
 
 {% load static %}
 {% block extra-head%}
-<link rel="stylesheet" href="/static/landing.css?{% now "U" %}"/>
+
+<link rel="stylesheet" href="{% static 'landing.css' %}?{% now "U" %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
 
 {%endblock%}
 
 {% block otherpages %}
 {% include 'modal.html' %}
 
-<!DOCTYPE html>
+<canvas id="bg-animation-canvas"></canvas>
 
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="{% static 'landing.css' %}">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Django Project</title>
-    </head>
+<div class="hero-text">
+  <h1>Welcome to <br> Fall 25 Tek club</h1>
+  <p>Discover. Create. Connect.</p>
+  <a href="{% url 'joinus:apply' %}" class="cta-button">Apply</a>
+</div>
 
-<div class="content-container">
-
-       
-    </div>
+<script src="{% static 'tek_animation.js' %}"></script>
 
 {%endblock%}

@@ -27,4 +27,6 @@ urlpatterns = [
     path('', include(('app3_news.urls', 'app3'), namespace='news')),
     path('', include(('app4_lab.urls', 'app4'), namespace='lab')),
     path('', include(('app5_joinus.urls', 'app5'), namespace='joinus')),
+    path('', include(('app6_info.urls', 'app6'), namespace='info')),
 ]
+

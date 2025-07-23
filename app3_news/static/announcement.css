@@ -97,3 +97,12 @@ body {
     text-decoration: none;
     font-weight: 410;
 }
+
+@media (max-width: 768px) {
+.coverpic a {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+}
+
