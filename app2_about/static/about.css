@@ -167,7 +167,7 @@ body {
 /* === Lab Card === */
 .lab-card {
     background-color: #E2E6E6;
-    padding:30px 40px;
+    padding: 30px 40px;
     border-radius: 12px;
     text-decoration: none;
     color: #000;
@@ -191,35 +191,117 @@ body {
 }
 
 /* === Lab Card Title & Description Styling and Hover === */
-.lab-card h3,
-.lab-card .lab-desc {
+.lab-card h3 {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
-    text-align: center;
     color: #000;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-    position: absolute;
-}
-
-.lab-card .lab-desc {
-    font-family: 'Rubik', sans-serif;
-    font-size: 16px;
-    margin-top: 55px;
-    opacity: 0;
-    max-height: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .lab-card:hover h3 {
     opacity: 0;
 }
 
+.lab-card .lab-desc {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    max-height: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
 .lab-card:hover .lab-desc {
     opacity: 1;
-    max-height: 100px;
-    color: #ffffff;
-    transform: translateY(10px);
+    transform: translateY(0);
+    max-height: 300px;
+    margin-bottom: 40px;
 }
+
+/* 이미지와 설명 텍스트 스타일 */
+.lab-card .lab-desc img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.lab-card .lab-desc p {
+    font-size: 13px;
+    color: white;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .hero {
+      padding: 20px;
+    }
+  
+    .hero-logo {
+      width: 250px;
+      margin-bottom: 20px;
+    }
+  
+    .hero-slogan {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  
+    .aboutsection {
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+  
+    .aboutsection h2 {
+      font-size: 24px;
+    }
+  
+    .aboutsection p {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+  
+    .section-heading {
+      font-size: 20px;
+    }
+  
+    .labstructure-card {
+      padding: 20px;
+      margin: 60px auto 30px;
+    }
+  
+    .labstructure-card h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .lab-cards {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .lab-card {
+      width: 90%;
+    }
+  
+    .lab-card h3 {
+      font-size: 16px;
+    }
+  
+    .lab-card .lab-desc {
+      font-size: 14px;
+    }
+  
+    .lab-card .lab-desc img {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .lab-card .lab-desc p {
+      font-size: 12px;
+    }
+}
+  

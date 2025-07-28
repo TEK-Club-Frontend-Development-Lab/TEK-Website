@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'app4_lab',    
     'app5_joinus',
     'app6_info',
+    'app7_account',
     'bootstrap5',
 ]
 
