@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'mypage.css' %}?{% now "U" %}">
+
+
+<style>
+    .fixed-header {
+        display: none !important;
+    }
+
+    .footer-content {
+        display: none !important;
+    }
+</style>
+
+{% endblock %}
+
+{% block otherpages %}
+  <body>
+    <div class="container">
+      <!-- Fixed header -->
+        <header>
+            <div class="header-content">
+            <div class="top-u-logo"></div>
+            <a href="{% url 'landing:landing' %}">
+                <img class="element-logo" alt="Element" src="{% static 'img/teklogo.png' %}" />
+            </a>
+            </div>
+        </header>
+
+      <!-- My Profile form card -->
+        <div class="form-container">
+            <div class="card">
+            <div class="card-content">
+                <!-- Profile header -->
+                <div class="form-header">
+                <h2>MY PROFILE</h2>
+                <div class="separator"></div>
+                </div>
+
+                <!-- User info summary -->
+                <div class="user-summary">
+                <div class="user-avatar">
+                    <div class="avatar-placeholder">
+                    <span>{{ user_initials }}</span>
+                    </div>
+                </div>
+                <div class="user-info">
+                    <h3 class="user-name">{{ user.first_name }} {{ user.last_name }}</h3>
+                    <p class="user-id">ID: {{ user.student_id }}</p>
+                    <p class="user-email">{{ user.email }}</p>
+                </div>
+                </div>
+
+                <!-- Form fields -->
+                <form method="post" action="">
+                {% csrf_token %}
+                <div class="form-tabs">
+                    <button type="button" class="tab-btn active" data-tab="personal">Personal Information</button>
+                    <button type="button" class="tab-btn" data-tab="account">Account Settings</button>
+                </div>
+
+                <div class="tab-content active" id="personal-tab">
+                    <div class="form-grid">
+                    <!-- Left column fields -->
+                    <div class="form-column">
+                        <div class="form-field">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" value="{{ user.first_name }}" required>
+                        </div>
+                        <div class="form-field">
+                        <label for="middleName">Middle Name (Optional)</label>
+                        <input type="text" id="middleName" name="middleName" value="{{ user.middle_name }}">
+                        </div>
+                        <div class="form-field">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" value="{{ user.last_name }}" required>
+                        </div>
+                        <div class="form-field">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" value="{{ user.phone_number }}">
+                        </div>
+                    </div>
+
+                    <!-- Right column fields -->
+                    <div class="form-column">
+                        <div class="form-field">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" class="form-select">
+                            <option value="male" {% if user.gender == 'male' %}selected{% endif %}>Male</option>
+                            <option value="female" {% if user.gender == 'female' %}selected{% endif %}>Female</option>
+                            <option value="prefer_not_to_answer" {% if user.gender == 'prefer_not_to_answer' %}selected{% endif %}>Prefer not to answer</option>
+                        </select>
+                        </div>
+                        <div class="form-field">
+                        <label for="academicYear">Academic Year</label>
+                        <select id="academicYear" name="academicYear" class="form-select">
+                            <option value="freshman" {% if user.academic_year == 'freshman' %}selected{% endif %}>Freshman</option>
+                            <option value="sophomore" {% if user.academic_year == 'sophomore' %}selected{% endif %}>Sophomore</option>
+                            <option value="junior" {% if user.academic_year == 'junior' %}selected{% endif %}>Junior</option>
+                            <option value="senior" {% if user.academic_year == 'senior' %}selected{% endif %}>Senior</option>
+                        </select>
+                        </div>
+                        <div class="form-field">
+                        <label for="kakaoTalkId">KakaoTalk ID</label>
+                        <input type="text" id="kakaoTalkId" name="kakaoTalkId" value="{{ user.kakao_talk_id }}">
+                        </div>
+                        <div class="form-field">
+                        <label for="etc">etc</label>
+                        <input type="text" id="etc" name="etc" value="{{ user.etc }}">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="account-tab">
+                    <div class="form-grid">
+                    <!-- Left column fields -->
+                    <div class="form-column">
+                        <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                        </div>
+                        <div class="form-field">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" name="currentPassword">
+                        </div>
+                    </div>
+
+                    <!-- Right column fields -->
+                    <div class="form-column">
+                        <div class="form-field">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" name="newPassword">
+                        </div>
+                        <div class="form-field">
+                        <label for="confirmNewPassword">Confirm New Password</label>
+                        <input type="password" id="confirmNewPassword" name="confirmNewPassword">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="action-buttons">
+                    <button type="button" class="cancel-button">Cancel</button>
+                    <button type="submit" class="submit-button">Save Changes</button>
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      // Simple tab switching functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Show corresponding tab content
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId + '-tab').classList.add('active');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
+{% endblock %}

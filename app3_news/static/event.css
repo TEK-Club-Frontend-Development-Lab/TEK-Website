@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif;
 }
 
 .coverpic {
@@ -9,6 +8,17 @@
     position: relative;
     z-index: -1;
     margin-top: 130px;
+}
+
+.coverpic::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);  
+    z-index: 1;
 }
 
 .coverpic img {
@@ -19,15 +29,15 @@
 }
 
 .coverpic a {
-    font-family: 'Montserrat', sans-serif;
     position: absolute;
+    text-decoration: none;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     font-size: 50px;
     font-weight: 800;
-    color: white;
+    color: #E2E6E6;
     z-index: 2;
 }
 
@@ -136,3 +146,83 @@
 .titledate p {
     font-size: 14px;
 }
+
+@media (max-width: 768px) {
+    .coverpic img {
+      height: 200px;
+    }
+  
+    .coverpic::after {
+      height: 200px;
+    }
+  
+    .coverpic a {
+      font-size: 30px;
+      padding: 0 10px;
+      white-space: normal;
+      text-align: center;
+    }
+  
+    .calendarcontainer {
+      margin-top: -60px;
+      margin-bottom: 60px;
+      height: auto;
+      padding: 20px 0;
+    }
+
+    .calendarcontainer hr {
+        margin-top: 0;
+    }
+  
+    .calendar-box {
+      flex-direction: column;
+      padding: 30px 20px;
+      margin-top: -20px;
+    }
+  
+    .calendar,
+    .event-schedule {
+      width: 100%;
+    }
+  
+    .calendar h3,
+    .event-schedule h3 a {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+  
+    .calendar table {
+      width: 80%;
+      font-size: 14px;
+    }
+  
+    .calendar td {
+      padding: 6px;
+      width: auto;
+      height: auto;
+    }
+  
+    .event-schedule h3 {
+      font-size: 26px;
+      justify-content: flex-start;
+      margin-top: 50px;
+    }
+  
+    .titledate {
+      margin: 10px 0;
+      padding: 10px;
+    }
+  
+    .titledate li {
+      font-size: 20px;
+    }
+  
+    .titledate h4 {
+      font-size: 15px;
+    }
+  
+    .titledate p {
+      font-size: 13px;
+    }
+}
+  

@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block extra-head %}
+
 <link rel="stylesheet" href="{% static 'lab.css' %}?{% now "U" %}">
 <style>
     /* Hide the carousel */
@@ -18,10 +19,31 @@
 </div>
 <div class="labcontainer">
     <h1>Data Visualization Lab</h1>
-    <h2>Description about data visualization lab will be included here.
-        <br>Description about data visualization lab will be included here.
-        <br>Description about data visualization lab will be included here.
+    <h2>Data Visualization Lab is where raw data transforms into powerful stories.
+        We explore real-world projects using Tableau, Power BI, and Google Looker Studio to build industry-level skills. From dashboards to interactive reports, members gain hands-on experience with tools used by top data professionals. We also hold peer workshops and live demo sessions to sharpen visualization techniques.
+        Join us to turn numbers into insights and make data speak visually!
     </h2>
+    <div class="labintro">
+        <h3>What We Study</h3>
+        <div class = "skilltable">
+            <div class = "skills">
+                <img src = "{% static 'img/datadashboard.png' %}">
+                <a>Data Dashboard</a>
+            </div>
+            <div class = "skills">
+                <img src = "{% static 'img/tableau.png' %}">
+                <a>Tableau</a>
+            </div>
+            <div class = "skills">
+                <img src = "{% static 'img/powerbi.png' %}">
+                <a>Power BI</a>
+            </div>
+            <div class = "skills">
+                <img src = "{% static 'img/googlelooker.png' %}">
+                <a>Google Looker</a>
+            </div>
+        </div>
     </div>
+</div>
 
 {% endblock %}

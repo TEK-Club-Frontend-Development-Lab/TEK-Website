@@ -48,6 +48,22 @@ main {
     justify-content: space-between;
 }
 
+.acc {
+    gap: 30px;
+    z-index: 9999;
+}
+
+.divider {
+    color: black; 
+    padding: 0 8px;
+  }
+
+.acc a {
+    text-decoration: none;
+    color: black;
+    gap: 10px;
+}
+
 .toplogo {
     max-width: 100px;
     height: 18px;
@@ -208,8 +224,13 @@ main {
     .toplogo {
         max-width: 100px;
         height: 18px;
-        margin: 0, 10px;
+        margin-left: -10px;
         display: block;
+    }
+
+    .acc {
+        font-size: 15px;
+        margin-right: -20px;
     }
 
 
@@ -411,7 +432,7 @@ main {
 
 @media (max-width: 768px) {
     .footer-content {
-        flex-direction: column; /* Stacks the logo and texts vertically on small screens */
+        flex-direction: row; /* Stacks the logo and texts vertically on small screens */
         align-items: center;
         text-align: center; /* Centers the text on small screens */
     }
@@ -426,5 +447,9 @@ main {
         width: 100%;
         flex: none;
     }
-}
 
+    .footer-logo-img {
+        height: 40px;
+        margin-left: 90%;
+    }
+}
