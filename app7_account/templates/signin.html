@@ -32,10 +32,11 @@
         <div class="divider"></div>
         <div class="sign-in-text">Sign in</div>
 
-        <form class="form-container">
+        <form class="form-container" method="post" action="{% url 'account:signin' %}">
+            {% csrf_token %}
             <div class="form-field">
-                <label class="form-label" for="id">ID</label>
-                <input class="form-input" type="text" id="id" name="id">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-input" type="text" id="username" name="username">
             </div>
             
             <div class="form-field">

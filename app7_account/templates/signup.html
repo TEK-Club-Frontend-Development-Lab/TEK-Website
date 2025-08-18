@@ -35,77 +35,96 @@
                 </div>
 
                 <form method="post" action="">
-                {% csrf_token %}
-                <div class="form-grid">
-                    <div class="form-column">
-                    <div class="form-field">
-                        <label for="id">ID</label>
-                        <input type="text" id="id" name="id" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="kakaoTalkId">KakaoTalk ID</label>
-                        <input type="text" id="kakaoTalkId" name="kakaoTalkId" required>
-                    </div>
+                    {% csrf_token %}
+                    <div class="form-grid">
+                        <div class="form-column">
+                        <div class="form-field">
+                            <label for="username">ID / Username</label>
+                            <input type="text" name="username" value="{{ form_data.username|default_if_none:'' }}"> 
+                            {% if error_messages.id_error %}
+                                <span style="color: red;">{{ error_messages.id_error }}</span>
+                            {% endif %}                   
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" value="{{ form_data.Email|default_if_none:'' }}">
+                            {% if error_messages.email_error %}
+                                <span style="color: red;">{{ error_messages.email_error }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="form-field">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="confirmpassword">Confirm Password</label>
+                            <input type="password" id="confirmpassword" name="confirmpassword" required>
+                            {% if error_messages.password_error %}
+                            <span style="color: red;">{{ error_messages.password_error }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="form-field">
+                            <label for="phonenumber">Phone Number</label>
+                            <input type="tel" id="phonenumber" name="phonenumber" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="kakaotalkID">KakaoTalk ID</label>
+                            <input type="text" id="kakaotalkID" name="kakaotalkID" required>
+                        </div>
+                        </div>
+
+                        <div class="form-column">
+                        <div class="form-field">
+                            <label for="first_name">First Name</label>
+                            <input type="text" id="first_name" name="first_name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="middle_name">Middle Name (Optional)</label>
+                            <input type="text" id="middle_name" name="middle_name">
+                        </div>
+                        <div class="form-field">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" id="last_name" name="last_name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" class="form-select">
+                            <option value="" disabled selected>Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="prefer_not_to_answer">Prefer not to answer</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="academicyear">Academic Year</label>
+                            <select id="academicyear" name="academicyear" class="form-select">
+                            <option value="" disabled selected>Select academic year</option>
+                            <option value="freshman">Freshman</option>
+                            <option value="sophomore">Sophomore</option>
+                            <option value="junior">Junior</option>
+                            <option value="senior">Senior</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="intendedmajor">Intended Major</label>
+                            <select id="intendedmajor" name="intendedmajor" class="form-select">
+                            <option value="" disabled selected>Select Intended Major</option>
+                            <option value="acctg">Accounting</option>
+                            <option value="bus">Business Administration</option>
+                            <option value="entp">Entrepreneurship</option>
+                            <option value="finan">Finance</option>
+                            <option value="is">Information Systems</option>
+                            <option value="mgt">Management</option>
+                            <option value="mktg">Marketing</option>
+                            <option value="osc">Operations & Supply Chain</option>
+                            <option value="qamo">Quantitative Analysis of Markets & Organizations</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-column">
-                    <div class="form-field">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" required>
+                    <div class="submit-container">
+                        <button type="submit" class="submit-button">Sign Up</button>
                     </div>
-                    <div class="form-field">
-                        <label for="middleName">Middle Name (Optional)</label>
-                        <input type="text" id="middleName" name="middleName">
-                    </div>
-                    <div class="form-field">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="gender">Gender</label>
-                        <select id="gender" name="gender" class="form-select">
-                        <option value="" disabled selected>Select gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="prefer_not_to_answer">Prefer not to answer</option>
-                        </select>
-                    </div>
-                    <div class="form-field">
-                        <label for="academicYear">Academic Year</label>
-                        <select id="academicYear" name="academicYear" class="form-select">
-                        <option value="" disabled selected>Select academic year</option>
-                        <option value="freshman">Freshman</option>
-                        <option value="sophomore">Sophomore</option>
-                        <option value="junior">Junior</option>
-                        <option value="senior">Senior</option>
-                        </select>
-                    </div>
-                    <div class="form-field">
-                        <label for="etc">etc</label>
-                        <input type="text" id="etc" name="etc">
-                    </div>
-                    </div>
-                </div>
-
-                <div class="submit-container">
-                    <button type="submit" class="submit-button">Sign Up</button>
-                </div>
                 </form>
             </div>
             </div>
