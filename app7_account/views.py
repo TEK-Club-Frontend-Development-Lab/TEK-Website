@@ -98,6 +98,9 @@ def mypage(request):
         profile.gender          = (request.POST.get("gender")        or "").strip()
         profile.academicyear    = (request.POST.get("academicyear")  or "").strip()
         profile.intendedmajor   = (request.POST.get("intendedmajor") or "").strip()
+        profile.status          = (request.POST.get("status") or "").strip()
+        profile.lab          = (request.POST.get("lab") or "").strip()
+
 
         request.user.save()
         profile.save()

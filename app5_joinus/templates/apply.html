@@ -27,21 +27,28 @@
                 <a href="#">TEK Club Application</a>
             </header>
 
-            <form class="application-form" action="/apply/submit/" method="post">
+            <form class="application-form" action="{% url 'joinus:submit' %}" method="post">
                 {% csrf_token %}
+            
+                {% if not request.user.is_authenticated %}
+                  <p style="color:#b00000; margin-bottom:12px;">
+                    Only members can submit. Please
+                    <a href="{% url 'account:signin' %}?next={{ request.path }}">sign in</a>.
+                  </p>
+                  <fieldset disabled>
+                {% endif %}
+            
         
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-        
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-        
-                <label for="grade">Year</label>
-                <select id="grade" name="grade">
-                    <option value="1">Freshman</option>
-                    <option value="2">Sophomore</option>
-                    <option value="3">Junior</option>
-                    <option value="4">Senior</option>
+                <label for="labpreference">
+                    What lab would you like to join?
+                    <p style="color: rgb(198, 198, 198);font-size: 12px;margin-bottom: 5px;">This is a preliminary survey, and the official recruitment of lab members will take place later.</p>
+                </label>
+                <select id="labpreference" name="labpreference">
+                    <option value="nopreference">No Preference</option>
+                    <option value="frontenddevelopment">Frontend Development</option>
+                    <option value="datavisualization">Data Visualization</option>
+                    <option value="dataengineering">Data Engineering</option>
+                    <option value="excel">Excel</option>
                 </select>
         
                 <label for="motivation">Why do you want to join?</label>
@@ -49,6 +56,39 @@
         
         
                 <input type="submit" value="Apply">
+                {% if not request.user.is_authenticated %}
+                    </fieldset>
+                {% endif %}
+
+                {% if messages %}
+                <div id="flash-messages" style="position:relative;margin:10px 0;padding:5px 5px;background:transparent;z-index:9999;">
+                    {% for message in messages %}
+                    <div class="flash-item {{ message.tags }}" style="margin:6px 0;display:flex;justify-content:space-between;gap:12px;">
+                        <span>{{ message }}</span>
+                        <button type="button" class="flash-close" aria-label="Close" style="border:none;background:transparent;font-size:18px;cursor:pointer;">×</button>
+                    </div>
+                    {% endfor %}
+                </div>
+                <script>
+                    (function(){
+                    const box = document.getElementById('flash-messages');
+                    if (!box) return;
+                    box.addEventListener('click', e => {
+                        if (e.target.classList.contains('flash-close')) {
+                        const item = e.target.closest('.flash-item');
+                        if (item) item.remove();
+                        if (!box.querySelector('.flash-item')) box.remove();
+                        }
+                    });
+                    setTimeout(() => {
+                        box.style.transition = 'opacity .4s ease';
+                        box.style.opacity = '0';
+                        setTimeout(() => box.remove(), 400);
+                    }, 3500);
+                    })();
+                </script>
+                {% endif %}
+
             </form>
 
         </div>

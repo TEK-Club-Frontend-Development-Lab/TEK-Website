@@ -1,17 +1,34 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+from .models import Application
 
-def apply(request): 
-    template=loader.get_template('apply.html')
-    return HttpResponse(template.render())
+def contact(request):
+    return render(request, 'contact.html')
 
+def faq(request):
+    return render(request, 'faq.html')
 
-def contact(request): 
-    template=loader.get_template('contact.html')
-    return HttpResponse(template.render())
+@login_required(login_url='account:signin')
+def apply(request):
+    return render(request, 'apply.html')
 
+@login_required(login_url='account:signin')
+@require_POST
+def submit_application(request):
+    labpreference = (request.POST.get('labpreference') or '').strip()
+    motivation = (request.POST.get('motivation') or '').strip()
 
-def faq(request): 
-    template=loader.get_template('faq.html')
-    return HttpResponse(template.render())
+    if not labpreference:
+        messages.error(request, "Please select a preferred lab.")
+        return redirect('joinus:apply')
+
+    Application.objects.create(
+        user=request.user,
+        labpreference=labpreference,
+        motivation=motivation
+    )
+
+    messages.success(request, "Application submitted. Thank you!")
+    return redirect('joinus:apply') 

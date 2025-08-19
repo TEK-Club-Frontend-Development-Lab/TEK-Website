@@ -57,7 +57,9 @@
                         {{ user.last_name }}
                     </h3>
                     <p class="user-id">ID: {{ user.username }}</p>
-                    <p class="user-email">{{ user.email }}</p>
+                    <p class="user-email">Email: {{ user.email }}</p>
+                    <p class="user-status">Status: {{ profile.status }}</p>
+                    <p class="user-status">Lab: {{ profile.lab }}</p>
                 </div>
                 </div>
 
@@ -179,7 +181,6 @@
                         (function(){
                         const box = document.getElementById('flash-messages');
                         if (!box) return;
-                        // 수동 닫기
                         box.addEventListener('click', e => {
                             if (e.target.classList.contains('flash-close')) {
                             const item = e.target.closest('.flash-item');
@@ -187,7 +188,6 @@
                             if (!box.querySelector('.flash-item')) box.remove();
                             }
                         });
-                        // 자동 닫기
                         setTimeout(() => {
                             box.style.transition = 'opacity .4s ease';
                             box.style.opacity = '0';

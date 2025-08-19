@@ -262,7 +262,7 @@
     margin-bottom: 5px;
   }
   
-  .user-id, .user-email {
+  .user-id, .user-email, .user-status {
     color: #707271;
     margin-bottom: 5px;
     font-size: 14px;
