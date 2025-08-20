@@ -9,7 +9,7 @@
 
     .modal {
       display: none;
-      position: fixed;
+      position: fixed; 
       z-index: 1000;
       inset: 0;
       background-color: rgba(0,0,0,0.5);
@@ -73,27 +73,95 @@
       text-decoration: none;
     }
     .close:hover { color: #000; }
+
+    .modal-top-controls {
+      position: absolute;
+      top: 12px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .no-show-label {
+      margin-top: 20px;
+      margin-left: 10px;
+      font-size: 0.85rem;
+      color: #444;
+      white-space: nowrap;
+    }
+
+    .no-show-label input {
+      margin-right: 4px;
+    }
+
+    .close {
+      font-size: 24px;
+      color: #E30613;
+      text-decoration: none;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+
   </style>
 </head>
 <body>
 
   <script>
-    window.onload = function() {
-      if (!window.location.hash) window.location.hash = "#modal";
+    function shouldShowModal() {
+      const noShowUntil = localStorage.getItem('modalNoShowUntil');
+      if (!noShowUntil) return true;
+  
+      const now = new Date();
+      return now.getTime() > parseInt(noShowUntil);
+    }
+  
+    window.onload = function () {
+      if (shouldShowModal()) {
+        window.location.hash = "#modal";
+      }
     };
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      const closeBtn = document.querySelector(".close");
+      const checkbox = document.getElementById("noShowToday");
+  
+      if (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+          if (checkbox.checked) {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            localStorage.setItem("modalNoShowUntil", tomorrow.getTime());
+          }
+        });
+      }
+    });
   </script>
+  
 
   <div id="modal" class="modal">
     <div class="modal-content">
-      <a href="#" class="close">&times;</a>
 
+      <div class="modal-top-controls">
+        <label class="no-show-label">
+          <input type="checkbox" id="noShowToday" />
+          Don't show this again today
+        </label>
+        <a href="#" class="close">&times;</a>
+      </div>
+    
       <div class="logo">
         <img src="{% static 'img/teklogo.png' %}" alt="Tek Club Logo">
       </div>
-
+    
       <h2>Tek Club Website is Launched Today!</h2>
-      <p>University of Utah Asia Campus </p>
+      <p>University of Utah Asia Campus</p>
     </div>
+    
   </div>
 </body>
 </html>

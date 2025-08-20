@@ -7,7 +7,6 @@ body {
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif;
 }
 
 .coverpic {
@@ -15,6 +14,17 @@ body {
     position: relative;
     z-index: -1;
     margin-top: 130px;
+}
+
+.coverpic::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);  
+    z-index: 1;
 }
 
 .coverpic img {
@@ -25,15 +35,15 @@ body {
 }
 
 .coverpic a {
-    font-family: 'Montserrat', sans-serif;
     position: absolute;
+    text-decoration: none;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     font-size: 50px;
-    font-weight: 500;
-    color: white;
+    font-weight: 700;
+    color:#E2E6E6;
     z-index: 2;
 }
 
@@ -41,7 +51,6 @@ body {
     max-width: 1366px;
     width: 80%;
     margin: 50px auto 50px auto;
-    font-family: 'Montserrat', sans-serif;
     font-size: 14.5px;
     border-collapse: collapse;
     color: #111;
@@ -64,7 +73,6 @@ body {
 }
 
 .board-table thead {
-    font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: normal;
     background-color:#E2E6E6;
@@ -85,7 +93,6 @@ body {
 
 .board-table td:nth-child(1),
 .board-table th:nth-child(1) {
-    font-family: 'Rubik', sans-serif;
     text-align: left;
     padding-left: 50px;
     width: 10%;
@@ -97,3 +104,57 @@ body {
     text-decoration: none;
     font-weight: 410;
 }
+@media (max-width: 768px) {
+    .coverpic {
+      margin-top: 100px;
+      height: 200px;
+    }
+  
+    .coverpic img {
+      height: 200px;
+    }
+  
+    .coverpic::after {
+      height: 200px;
+    }
+  
+    .coverpic a {
+      font-size: 28px;
+      padding: 0 10px;
+      white-space: normal;
+      text-align: center;
+    }
+  
+    .announcement-board {
+      width: 90%;
+      font-size: 13px;
+      margin: 30px auto;
+    }
+  
+    .announcement-board h2 {
+      font-size: 160%;
+      margin-bottom: 20px;
+    }
+  
+    .board-table th,
+    .board-table td {
+      font-size: 12.5px;
+      padding: 10px 6px;
+    }
+  
+    .board-table td:nth-child(1),
+    .board-table th:nth-child(1) {
+      padding-left: 20px;
+      text-align: left;
+    }
+  
+    .board-table {
+      word-break:keep-all;
+      table-layout: auto;
+    }
+  
+    .board-table a {
+      font-size: 13px;
+    }
+  }
+  
