@@ -21,7 +21,7 @@ def submit_application(request):
     motivation = (request.POST.get('motivation') or '').strip()
 
     if not labpreference:
-        messages.error(request, "Please select a preferred lab.")
+        messages.error(request, "Please select a preferred lab.", extra_tags='app5')
         return redirect('joinus:apply')
 
     Application.objects.create(
@@ -30,5 +30,5 @@ def submit_application(request):
         motivation=motivation
     )
 
-    messages.success(request, "Application submitted. Thank you!")
+    messages.success(request, "Application submitted. Thank you!", extra_tags='app5')
     return redirect('joinus:apply') 

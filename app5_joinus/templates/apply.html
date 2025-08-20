@@ -63,10 +63,12 @@
                 {% if messages %}
                 <div id="flash-messages" style="position:relative;margin:10px 0;padding:5px 5px;background:transparent;z-index:9999;">
                     {% for message in messages %}
-                    <div class="flash-item {{ message.tags }}" style="margin:6px 0;display:flex;justify-content:space-between;gap:12px;">
-                        <span>{{ message }}</span>
-                        <button type="button" class="flash-close" aria-label="Close" style="border:none;background:transparent;font-size:18px;cursor:pointer;">×</button>
-                    </div>
+                        {% if 'app5' in message.tags %}
+                            <div class="flash-item {{ message.tags }}" style="margin:6px 0;display:flex;justify-content:space-between;gap:12px;">
+                                <span>{{ message }}</span>
+                                <button type="button" class="flash-close" aria-label="Close" style="border:none;background:transparent;font-size:18px;cursor:pointer;">×</button>
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
                 <script>

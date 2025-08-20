@@ -54,7 +54,7 @@ body {
     font-size: 14.5px;
     border-collapse: collapse;
     color: #111;
-    border-radius: 12px;
+    border-radius: 0px;
     overflow: hidden;
 }
 
@@ -91,19 +91,95 @@ body {
     vertical-align: middle;
 }
 
-.board-table td:nth-child(1),
-.board-table th:nth-child(1) {
-    text-align: left;
-    padding-left: 50px;
-    width: 10%;
-}
 
+th:nth-child(1), td:nth-child(1) { width: 10%; }  
+th:nth-child(2), td:nth-child(2) { width: 50%; } 
+th:nth-child(3), td:nth-child(3) { width: 20%; } 
+th:nth-child(4), td:nth-child(4) { width: 20%; } 
 
 .board-table a {
     color: #000;
     text-decoration: none;
     font-weight: 410;
 }
+
+.pagination {
+  justify-content: center;
+  margin-top: 20px;
+  text-align: center;
+  flex-wrap: wrap;
+  border: none;
+  font-size: 15px;
+}
+
+.pagination a, .pagination span {
+  margin: 0 5px;
+  padding: 6px 12px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 0px;
+}
+
+.pagination .current {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
+.back-button-container {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.back-button {
+    position: relative;
+    display: inline-block;
+    padding: 8px 30px;
+    background-color: transparent;
+    color: #707271;
+    text-decoration: none;
+    border: 1px solid #707271;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    border-radius: 0;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.back-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 100%;
+    background-color: #707271;
+    transition: width 0.4s ease, left 0.4s ease;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+.back-button:hover::before {
+    width: 100%;
+    left: 50%;
+}
+
+.back-button:hover {
+    color: #ffffff;
+}
+
+.back-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.back-button a {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
 @media (max-width: 768px) {
     .coverpic {
       margin-top: 100px;
