@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra-head %}
+  <link rel="stylesheet" href="{% static 'signin.css' %}?{% now "U" %}">
+
+<style>
+    .fixed-header {
+        display: none !important;
+    }
+
+    .footer-content {
+        display: none !important;
+    }
+</style>
+
+{% endblock %}
+
+{% block otherpages %}
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-text">Welcome to</div>
+            <a href="{% url 'landing:landing' %}">
+                <img class="header-logo" src="{% static 'img/teklogo.png' %}" alt="TEK CLUB logo">
+            </a>
+        </div>
+    </header>
+
+    <div class="login-card">
+        <img class="logo" src="{% static 'img/teklogo1.png' %}" alt="TEK CLUB logo">
+        <div class="divider"></div>
+        <div class="sign-in-text">Sign in</div>
+
+        <form class="form-container" method="post" action="{% url 'account:signin' %}">
+            {% csrf_token %}
+            <div class="form-field">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-input" type="text" id="username" name="username">
+            </div>
+            
+            <div class="form-field">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-input" type="password" id="password" name="password">
+            </div>
+
+            <button type="submit" class="next-button">Next</button>
+            
+            <div class="signup-text">
+                Don't have an account? <a href="{% url 'account:signup' %}" class="signup-link">Sign Up</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}

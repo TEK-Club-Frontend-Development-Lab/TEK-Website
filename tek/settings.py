@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'app3_news',
     'app4_lab',    
     'app5_joinus',
+    'app6_info',
+    'app7_account',
     'bootstrap5',
 ]
 
@@ -143,3 +145,6 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'announcement_detail.css' %}?{% now "U" %}">
+<style>
+    /* Hide the carousel */
+    .carousel-inner {
+    display: none !important;
+    }
+</style>
+{% endblock %}
+
+{% block otherpages %}
+<!--<div class = "coverpic">
+    <img src = "{% static 'img/coverpic1.jpg' %}">
+    <a>Events</a>
+</div>-->
+
+<div class=container>
+    <div class="post-container">
+        <h1 class="post-title">{{ post.postname }}</h1>
+     <div class="post-meta">
+         <span class="post-date">{{ post.date|date:"Y-m-d" }}</span> | <span class="post-author">{{ post.author }}</span>
+    </div>
+    <hr class="meta-divider">
+        <div class="post-content">
+            {{ post.contents|linebreaks }}
+        </div>
+
+        {% for file in post.files.all %}
+            {% with filename=file.file.name|lower %}
+                {% if ".jpg" in filename or ".jpeg" in filename or ".png" in filename or ".gif" in filename or ".bmp" in filename or ".webp" in filename or ".tiff" in filename or ".svg" in filename %}
+                    <div class="attached-image">
+                        <img src="{{ file.file.url }}" alt="img">
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+
+
+                <!-- file download -->
+        {% with file_list=post.files.all %}
+            {% if file_list %}
+                <table class="attachment-table">
+                    <tr><th>Attached File</th>
+                        <td>
+                            {% for file in file_list %}
+                                {% with filename=file.file.name|lower %}
+                                    {% if not ".jpg" in filename and not ".jpeg" in filename and not ".png" in filename and not ".gif" in filename and not ".bmp" in filename and not ".webp" in filename and not ".tiff" in filename and not ".svg" in filename %}
+                                        <div class="file-download">
+                                            <a href="{{ file.file.url }}" download>
+                                                {{ file.file.name|cut:"uploads/" }}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+            {% endif %}
+        {% endwith %}
+        <div class="back-button-container">
+            <a href="{% url 'news:announcement' %}" class="back-button"><span>View All</span></a>
+        </div>
+        {% if request.user == post.author %}
+            <div class="post-actions" style="margin-top: 20px; text-align: right;">
+                <a href="{% url 'news:announcement_edit' post.id %}" class="btn btn-edit">Edit</a>
+                <form action="{% url 'news:announcement_delete' post.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this?');">Delete</button>
+                </form>
+            </div>
+        {% endif %}
+
+        {% if messages %}
+        <div id="flash-messages" style="position:relative;margin:10px 0;padding:5px 5px;background:transparent;z-index:9999;">
+          {% for message in messages %}
+            {% if 'app3' in message.tags %}
+              <div class="flash-item {{ message.tags }}" style="margin:6px 0;display:flex;justify-content:space-between;gap:12px;">
+                <span>{{ message }}</span>
+                <button type="button" class="flash-close" aria-label="Close" style="border:none;background:transparent;font-size:18px;cursor:pointer;">×</button>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <script>
+          (function(){
+            const box = document.getElementById('flash-messages');
+            if (!box) return;
+            box.addEventListener('click', e => {
+              if (e.target.classList.contains('flash-close')) {
+                const item = e.target.closest('.flash-item');
+                if (item) item.remove();
+                if (!box.querySelector('.flash-item')) box.remove();
+              }
+            });
+            setTimeout(() => {
+              box.style.transition = 'opacity .4s ease';
+              box.style.opacity = '0';
+              setTimeout(() => box.remove(), 400);
+            }, 3500);
+          })();
+        </script>
+      {% endif %}  
+    </div>
+</div>
+{%endblock%}

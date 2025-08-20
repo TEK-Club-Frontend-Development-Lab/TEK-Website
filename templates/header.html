@@ -6,9 +6,23 @@
 <div class="fixed-header">
 
     <div class="topbanner">
-        <img src="/static/img/ulogo2.png"class="toplogo" alt="top u logo" width="700">
         <a href="{% url 'landing:landing' %}">
-
+            <img src="/static/img/ulogo2.png"class="toplogo" alt="top u logo" width="700">
+        </a>
+        
+        {% if user.is_authenticated %}
+        <div class = "acc">
+            <a href = "{% url 'account:mypage' %}">My Page</a>
+            <span class="divider">|</span>
+            <a href = "{% url 'account:logout' %}">Logout</a>
+        </div>
+        {% else %}
+        <div class = "acc">
+            <a href = "{% url 'account:signin' %}">Sign in</a>
+            <span class="divider">|</span>
+            <a href = "{% url 'account:signup' %}">Sign up</a>
+        </div>
+        {% endif %}
     </div>
 
     <div class="header-container">
@@ -18,13 +32,13 @@
             </a>
         </div>
 
+        
+
         <div class="nav-links">
-            <!--<input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label">
-                ☰ <!-- Unicode character for hamburger icon -->
-            </label>
+        
             <ul class="menu"> 
                 <li><a href="{% url 'about:about' %}">About</a></li>
+            
                 <li><a href="{% url 'news:announcement' %}">News</a>
                     <ul class="submenu">
                         <li><a href="{% url 'news:announcement' %}">Announcement</a></li>
@@ -45,22 +59,77 @@
                         <li><a href="{% url 'joinus:contact' %}">Contact</a></li>
                     </ul>
                 </li>
+                <li><a href="{% url 'info:regulation' %}">Info</a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'info:regulation' %}">Regulation</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            ☰
+        </label>
+
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="{% url 'about:about' %}">About</a></li>
+                <li><a href="#" class="mobile-news-toggle">News</a>
+                    <ul class="mobile-submenu">
+                        <li><a href="{% url 'news:announcement' %}">Announcement</a></li>
+                        <li><a href="{% url 'news:event' %}">Event</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#" class="mobile-news-toggle">Labs</a>
+                    <ul class="mobile-submenu">
+                        <li><a href="{% url 'lab:lab1' %}">Frontend Development</a></li>
+                        <li><a href="{% url 'lab:lab2' %}">Data Visualization</a></li>
+                        <li><a href="{% url 'lab:lab3' %}">Data Engineering</a></li>
+                        <li><a href="{% url 'lab:lab4' %}">Excel</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="mobile-news-toggle">Join us</a>
+                    <ul class="mobile-submenu">
+                        <li><a href="{% url 'joinus:apply' %}">Apply</a></li>
+                        <li><a href="{% url 'joinus:contact' %}">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="mobile-news-toggle">Info</a>
+                    <ul class="mobile-submenu">
+                        <li><a href="{% url 'info:regulation' %}">Regulation</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
 </div>
-    <!-- Carousel background -->
-    <!--<div class="carousel-item"></div>-->
-    <!-- Carousel Items (Background Images) -->
-<div class="carousel-inner" style="width: 100%; display: block; clear: both;">
-    <div class="carousel-item active">
-        <div class="carousel-image">
-            <img src="{% static 'img/tech.jpg' %}" 
-                alt="carousel image" 
-                style="width: 100%; height: 100%; object-fit: cover; display: block;">
-        </div>
-        <div class="carousel-caption carousel-caption-custom">
-            <h5>Welcome to Tek club</h5>
-        </div>
-    </div>
-</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggles = document.querySelectorAll(".mobile-news-toggle");
+    
+      toggles.forEach((toggle) => {
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          const submenu = this.nextElementSibling;
+    
+         /* close opened submenu when the other clicked */
+
+          document.querySelectorAll(".mobile-submenu").forEach((menu) => {
+            if (menu !== submenu) {
+              menu.classList.remove("show");
+            }
+          });
+    
+          submenu.classList.toggle("show");
+        });
+      });
+    });
+    </script>
+    
+    
+    
+    
+

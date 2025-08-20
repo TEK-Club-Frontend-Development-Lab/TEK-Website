@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'regulation.css' %}?{% now "U" %}">
+<style>
+    /* Hide the carousel */
+    .carousel-inner {
+    display: none !important;
+    }
+</style>
+{% endblock %}

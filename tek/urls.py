@@ -18,13 +18,20 @@ from django.contrib import admin
 from django.urls import include,path
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('app1_landing.urls', 'app1'), namespace='landing')),
-    path('', include(('app2_about.urls', 'app2'), namespace='about')),
-    path('', include(('app3_news.urls', 'app3'), namespace='news')),
-    path('', include(('app4_lab.urls', 'app4'), namespace='lab')),
-    path('', include(('app5_joinus.urls', 'app5'), namespace='joinus')),
+    path('about/', include(('app2_about.urls', 'app2'), namespace='about')),
+    path('news/', include(('app3_news.urls', 'app3'), namespace='news')),
+    path('lab/', include(('app4_lab.urls', 'app4'), namespace='lab')),
+    path('joinus/', include(('app5_joinus.urls', 'app5'), namespace='joinus')),
+    path('info/', include(('app6_info.urls', 'app6'), namespace='info')),
+    path('account/', include(('app7_account.urls', 'app7'), namespace='account')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
