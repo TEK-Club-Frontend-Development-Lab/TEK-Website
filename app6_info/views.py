@@ -6,3 +6,6 @@ from django.template import loader
 
 def regulation(request): 
     return render(request, 'regulation.html')
+
+def healthz(request):
+    return HttpResponse("ok", status=200)
