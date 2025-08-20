@@ -30,6 +30,9 @@
             </div>
         </header>
 
+
+
+
       <!-- My Profile form card -->
         <div class="form-container">
             <div class="card">
@@ -48,9 +51,15 @@
                     </div>
                 </div>
                 <div class="user-info">
-                    <h3 class="user-name">{{ user.first_name }} {{ user.last_name }}</h3>
-                    <p class="user-id">ID: {{ user.student_id }}</p>
-                    <p class="user-email">{{ user.email }}</p>
+                    <h3 class="user-name">
+                        {{ user.first_name }} 
+                        {% if profile.middle_name %} {{ profile.middle_name }}{% endif %}
+                        {{ user.last_name }}
+                    </h3>
+                    <p class="user-id">ID: {{ user.username }}</p>
+                    <p class="user-email">Email: {{ user.email }}</p>
+                    <p class="user-status">Status: {{ profile.status }}</p>
+                    <p class="user-status">Lab: {{ profile.lab }}</p>
                 </div>
                 </div>
 
@@ -67,21 +76,21 @@
                     <!-- Left column fields -->
                     <div class="form-column">
                         <div class="form-field">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" value="{{ user.first_name }}" required>
-                        </div>
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name"  name="first_name"  value="{{ user.first_name }}" required>
+                    </div>
                         <div class="form-field">
-                        <label for="middleName">Middle Name (Optional)</label>
-                        <input type="text" id="middleName" name="middleName" value="{{ user.middle_name }}">
-                        </div>
+                        <label for="middle_name">Middle Name (Optional)</label>
+                        <input type="text" id="middle_name" name="middle_name" value="{{ profile.middle_name }}">
+                    </div>
                         <div class="form-field">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" value="{{ user.last_name }}" required>
-                        </div>
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name"   name="last_name"   value="{{ user.last_name }}" required>
+                    </div>
                         <div class="form-field">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" value="{{ user.phone_number }}">
-                        </div>
+                        <label for="phonenumber">Phone Number</label>
+                        <input type="tel"  id="phonenumber" name="phonenumber" value="{{ profile.phonenumber }}">
+                    </div>
                     </div>
 
                     <!-- Right column fields -->
@@ -89,27 +98,37 @@
                         <div class="form-field">
                         <label for="gender">Gender</label>
                         <select id="gender" name="gender" class="form-select">
-                            <option value="male" {% if user.gender == 'male' %}selected{% endif %}>Male</option>
-                            <option value="female" {% if user.gender == 'female' %}selected{% endif %}>Female</option>
-                            <option value="prefer_not_to_answer" {% if user.gender == 'prefer_not_to_answer' %}selected{% endif %}>Prefer not to answer</option>
+                            <option value="male" {% if profile.gender == 'male' %}selected{% endif %}>Male</option>
+                            <option value="female" {% if profile.gender == 'female' %}selected{% endif %}>Female</option>
+                            <option value="prefer_not_to_answer" {% if profile.gender == 'prefer_not_to_answer' %}selected{% endif %}>Prefer not to answer</option>
                         </select>
                         </div>
                         <div class="form-field">
-                        <label for="academicYear">Academic Year</label>
-                        <select id="academicYear" name="academicYear" class="form-select">
-                            <option value="freshman" {% if user.academic_year == 'freshman' %}selected{% endif %}>Freshman</option>
-                            <option value="sophomore" {% if user.academic_year == 'sophomore' %}selected{% endif %}>Sophomore</option>
-                            <option value="junior" {% if user.academic_year == 'junior' %}selected{% endif %}>Junior</option>
-                            <option value="senior" {% if user.academic_year == 'senior' %}selected{% endif %}>Senior</option>
+                        <label for="academicyear">Academic Year</label>
+                        <select id="academicyear" name="academicyear" class="form-select">
+                            <option value="freshman" {% if profile.academicyear == 'freshman' %}selected{% endif %}>Freshman</option>
+                            <option value="sophomore" {% if profile.academicyear == 'sophomore' %}selected{% endif %}>Sophomore</option>
+                            <option value="junior" {% if profile.academicyear == 'junior' %}selected{% endif %}>Junior</option>
+                            <option value="senior" {% if profile.academicyear == 'senior' %}selected{% endif %}>Senior</option>
                         </select>
                         </div>
                         <div class="form-field">
-                        <label for="kakaoTalkId">KakaoTalk ID</label>
-                        <input type="text" id="kakaoTalkId" name="kakaoTalkId" value="{{ user.kakao_talk_id }}">
+                        <label for="kakaotalkID">KakaoTalk ID</label>
+                        <input type="text" id="kakaotalkID" name="kakaotalkID" value="{{ profile.kakaotalkID }}">
                         </div>
                         <div class="form-field">
-                        <label for="etc">etc</label>
-                        <input type="text" id="etc" name="etc" value="{{ user.etc }}">
+                        <label for="intendedmajor">Intended Major</label>
+                        <select id="intendedmajor" name="intendedmajor" class="form-select">
+                            <option value="acctg" {% if profile.intendedmajor == 'acctg' %}selected{% endif %}>Accounting</option>
+                            <option value="bus" {% if profile.intendedmajor == 'bus' %}selected{% endif %}>Business Administration</option>
+                            <option value="entp" {% if profile.intendedmajor == 'entp' %}selected{% endif %}>Entrepreneurship</option>
+                            <option value="finan" {% if profile.intendedmajor == 'finan' %}selected{% endif %}>Finance</option>
+                            <option value="is" {% if profile.intendedmajor == 'is' %}selected{% endif %}>Information Systems</option>
+                            <option value="mgt" {% if profile.intendedmajor == 'mgt' %}selected{% endif %}>Management</option>
+                            <option value="mktg" {% if profile.intendedmajor == 'mktg' %}selected{% endif %}>Marketing</option>
+                            <option value="osc" {% if profile.intendedmajor == 'osc' %}selected{% endif %}>Operations & Supply Chain</option>
+                            <option value="qamo" {% if profile.intendedmajor == 'qamo' %}selected{% endif %}>Quantitative Analysis of Markets & Organizations</option>
+                        </select>
                         </div>
                     </div>
                     </div>
@@ -124,20 +143,20 @@
                         <input type="email" id="email" name="email" value="{{ user.email }}" required>
                         </div>
                         <div class="form-field">
-                        <label for="currentPassword">Current Password</label>
-                        <input type="password" id="currentPassword" name="currentPassword">
+                        <label for="current_password">Current Password</label>
+                        <input type="password" id="current_password" name="current_password">
                         </div>
                     </div>
 
                     <!-- Right column fields -->
                     <div class="form-column">
                         <div class="form-field">
-                        <label for="newPassword">New Password</label>
-                        <input type="password" id="newPassword" name="newPassword">
+                        <label for="new_password">New Password</label>
+                        <input type="password" id="new_password" name="new_password">
                         </div>
                         <div class="form-field">
-                        <label for="confirmNewPassword">Confirm New Password</label>
-                        <input type="password" id="confirmNewPassword" name="confirmNewPassword">
+                        <label for="confirm_new_password">Confirm New Password</label>
+                        <input type="password" id="confirm_new_password" name="confirm_new_password">
                         </div>
                     </div>
                     </div>
@@ -148,6 +167,35 @@
                     <button type="button" class="cancel-button">Cancel</button>
                     <button type="submit" class="submit-button">Save Changes</button>
                 </div>
+
+                {% if messages %}
+                    <div id="flash-messages" style="position:relative;margin:16px 0;padding:12px 16px;border:1px solid #ddd;background:#fff;z-index:9999;">
+                        {% for message in messages %}
+                        <div class="flash-item {{ message.tags }}" style="margin:6px 0;display:flex;justify-content:space-between;gap:12px;">
+                            <span>[{{ message.tags|upper }}] {{ message }}</span>
+                            <button type="button" class="flash-close" aria-label="Close" style="border:none;background:transparent;font-size:18px;cursor:pointer;">×</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <script>
+                        (function(){
+                        const box = document.getElementById('flash-messages');
+                        if (!box) return;
+                        box.addEventListener('click', e => {
+                            if (e.target.classList.contains('flash-close')) {
+                            const item = e.target.closest('.flash-item');
+                            if (item) item.remove();
+                            if (!box.querySelector('.flash-item')) box.remove();
+                            }
+                        });
+                        setTimeout(() => {
+                            box.style.transition = 'opacity .4s ease';
+                            box.style.opacity = '0';
+                            setTimeout(() => box.remove(), 400);
+                        }, 3500);
+                        })();
+                    </script>
+                    {% endif %}
                 </form>
             </div>
             </div>

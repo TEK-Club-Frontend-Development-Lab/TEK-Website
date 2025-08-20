@@ -22,30 +22,47 @@
         <table class="board-table">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Title</th>
-                    <th>Date</th>
-                    <th>Writer</th>
+                    {% for col in col_head %}
+                    <th>{{ col }}</th>
+                    {% endfor %}
                 </tr>
             </thead>
             <tbody>
+                {% for number, list in numbered_posts %}
                 <tr>
-                    <td>1</td>
-                    <td><a href="{% url 'news:post1' %}">TEK Club Homepage Officially Open!</a></td>
-                    <td>2025-05-21</td>
-                    <td>Admin</td>
-                </tr>
-
-                {% for row in data_body %}
-                <tr>
-                    <td>{{ row.0 }}</td>
-                    <td>{{ row.1 }}</td>
-                    <td>{{ row.2 }}</td>
-                    <td>{{ row.3 }}</td>
+                    <td>
+                        {{ number }}
+                    <td class = "title-col">
+                        <a href="{% url 'news:announcement_detail' list.id %}">
+                            {{ list.postname }}
+                        </a>
+                    </td>
+                    <td>{{ list.author }}</td>
+                    <td>{{ list.date|date:"Y-m-d" }}</td> 
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1"> << </a>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}"> < </a>
+                {% endif %}
+        
+                <span class="current">
+                    {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">></a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}";>>></a>
+                {% endif %}
+            </span>
+        </div>
+        <div class="back-button-container">
+            <a href="{% url 'news:announcement_create' %}" class="back-button"><span>Post</span></a>
+        </div>
     </div>
 
 {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra-head %}
+<link rel="stylesheet" href="{% static 'announcement_form.css' %}?{% now "U" %}">
+<style>
+    /* Hide the carousel */
+    .carousel-inner {
+    display: none !important;
+    }
+</style>
+{% endblock %}
+
+{% block otherpages %}
+<!--<div class = "coverpic">
+    <img src = "{% static 'img/coverpic1.jpg' %}">
+    <a>Events</a>
+</div>-->
+
+<div class=post-container>
+    <form method="post" enctype="multipart/form-data" class="announcement-form">
+        <p style="font-size: 30px;font-weight: 700;margin-top: 0px;padding: 0;">Create Post</p>
+        {% csrf_token %}
+        <div class="form-group">
+            {{ post_form.postname.errors }}
+            {{ post_form.postname }}
+        </div>
+    
+        <div class="form-group">
+            {{ post_form.contents.errors }}
+            {{ post_form.contents }}
+        </div>
+    
+        <div class="form-group file-upload">
+            {{ file_form.files.errors }}
+            {{ file_form.files }}
+        </div>
+        <div class="back-button-container">
+            <button type="submit" class="back-button"><span>Upload</span></button>
+        </div>
+    </form>    
+</div>
+{%endblock%}

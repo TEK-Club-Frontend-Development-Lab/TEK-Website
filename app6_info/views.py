@@ -5,5 +5,4 @@ from django.template import loader
 # Create your views here.
 
 def regulation(request): 
-    template=loader.get_template('regulation.html')
-    return HttpResponse(template.render())
+    return render(request, 'regulation.html')

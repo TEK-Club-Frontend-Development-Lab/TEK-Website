@@ -3,6 +3,7 @@ body, html {
   padding: 0;
   background: #890000;
   position: relative;
+  display: block;
 }
 
 
@@ -53,6 +54,7 @@ body, html {
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   cursor: pointer;
+  margin-bottom: 0.8rem;
 }
 
 .hero-text .cta-button:hover {
@@ -106,6 +108,7 @@ body, html {
   margin-top: 600px;
   position: relative;
   z-index: 2;
+  display: block;
 }
 
 .club-description {
