@@ -60,9 +60,11 @@
                 {% endif %}
             </span>
         </div>
+        {% if request.user.is_authenticated %}
         <div class="back-button-container">
             <a href="{% url 'news:announcement_create' %}" class="back-button"><span>Post</span></a>
         </div>
+        {% endif %}
     </div>
 
 {% endblock %}

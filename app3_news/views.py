@@ -91,16 +91,19 @@ def announcement_detail(request, id):
         'next_post': next_post,
     })
 
-# New Posts
 @login_required(login_url='/login/')
 def announcement_create(request):
+    if not (request.user.is_superuser or request.user.is_staff):
+        messages.error(request, "You don't have permission to access", extra_tags='app3')
+        return redirect('news:announcement')  
+
     if request.method == 'POST':
         post_form = PostForm(request.POST)
         file_form = FileForm(request.POST, request.FILES)
 
         if post_form.is_valid():
             post = post_form.save(commit=False)
-            post.author = request.user  
+            post.author = request.user
             post.category = 'announcement'
             post.save()
 
@@ -117,6 +120,7 @@ def announcement_create(request):
         'post_form': post_form,
         'file_form': file_form,
     })
+
 
 # Revise posts
 @login_required(login_url='/login/')
