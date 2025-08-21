@@ -21,7 +21,7 @@ def signin_view(request):
             login(request, user)
             return redirect('landing:landing')  
         else:
-            messages.error(request, 'Invalid username or password')
+            messages.error(request, 'Invalid username or password', extra_tags='app7')
             return redirect('account:signin')   
     return render(request, 'signin.html')       
 
@@ -72,14 +72,7 @@ def logout_view(request):
     return redirect('landing:landing')
 
 # app7_account/views.py
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib import auth
-from django.db import transaction
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-from .models import UserProfile
+
 
 
 @login_required
@@ -112,13 +105,13 @@ def mypage(request):
         had_pw_error = False
         if current_password or new_password or confirm_new_password:
             if not (current_password and new_password and confirm_new_password):
-                messages.error(request, "To change password, fill all password fields.")
+                messages.error(request, "To change password, fill all password fields.", extra_tags='app7')
                 had_pw_error = True
             elif not request.user.check_password(current_password):
-                messages.error(request, "Current password is incorrect.")
+                messages.error(request, "Current password is incorrect.", extra_tags='app7')
                 had_pw_error = True
             elif new_password != confirm_new_password:
-                messages.error(request, "New passwords do not match.")
+                messages.error(request, "New passwords do not match.", extra_tags='app7')
                 had_pw_error = True
             else:
                 request.user.set_password(new_password)
@@ -126,7 +119,7 @@ def mypage(request):
                 update_session_auth_hash(request, request.user)
                 messages.success(request, "Password updated.")
 
-        messages.success(request, "Profile saved.")
+        messages.success(request, "Profile saved.", extra_tags='app7')
         return redirect("account:mypage")
 
     # GET
